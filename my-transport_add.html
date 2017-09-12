@@ -15,14 +15,25 @@
 	<header class="header header-inner">
 		<div class="header__top">
 			<div class="top-left">
-				<div class="top-left__city city">
-					<p class="city__item city__item-active">Казахстан</p>
-					<ul class="city__choice choice">
-						<li class="choice__link choice__link-active"></li>
-						<li class="choice__link"></li>
-						<li class="choice__link"></li>
-					</ul>
+			<div class="top-left__city city">
+				<p class="city__item">Казахстан</p>
+				<div class="city__choice choice">
+					<div class="choice__country">
+						<div class="choice__title">Страна</div>
+						<select name="" id="" class="js-example-basic-single" data-placeholder="Форма собст-ти">
+							<option value="AL">Alabama</option>
+							<option value="WY">Wyoming</option>
+							<option value="AL">Alabama</option>
+							<option value="WY">Wyoming</option>
+						</select>
+					</div>
+					<div class="choice__city">
+						<div class="choice__title">Город</div>
+						<input type="text" class="choice__name">
+					</div>
+					<button class="choice__button">Выбрать</button>
 				</div>
+			</div>
 				<div class="top-left__phone">
 					<p class="top-left__text">8(800) 556 78 34</p>
 					<a href="" class="top-left__link">заказать звонок</a>
@@ -33,13 +44,27 @@
 					<ul class="lang__bl">
 						<li class="lang__item lang__item-active lang__item-rus">Рус</li>
 						<li class="lang__item lang__item-kaz">Каз</li>
-						<li class="lang__item lang__item-eng">Eng</li>
+						<li class="lang__item lang__item-chn">中國</li>
 					</ul>
 				</div>
 				<div class="connect-block">
 					<a href="" class="connect-block__item connect-block__item-enter">Вход</a>
 					<a href="" class="connect-block__item connect-block__item-registr">Регистрация</a>
-
+					<div class="enter-popup">
+						<form action="">
+							<div class="enter-popup__item">
+								<div class="enter-popup__title">E-mail</div>
+								<input type="text" class="enter-popup__input">
+							</div>
+							<div class="enter-popup__item">
+								<div class="enter-popup__title">Пароль</div>
+								<input type="text" class="enter-popup__input">
+							</div>
+							<div class="enter-popup__button">Войти</div>
+							<a href="" class="enter-popup__link enter-popup__link-registr">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+							<a href="" class="enter-popup__link enter-popup__link-forget">ЗАБЫЛИ ПАРОЛЬ?</a>
+						</form>
+					</div>
 				</div>
 			</div>
 			<div class="clear"></div>	
@@ -70,23 +95,85 @@
 						<div class="forms-block__info">Укажите желаемые пункты погрузки и выгрузки, параметры транспортного стредства и контактную информацию</div>
 						<div class="forms-block__item">
 							<div class="forms-block__separate label-edit">
-								<p class="label-edit__name">Название *</p>
-								<select name="" id="" class="js-example-basic-single label-edit__select-city" data-placeholder="Форма собст-ти">
-									<option value="AL">Alabama</option>
-									<option value="WY">Wyoming</option>
-									<option value="AL">Alabama</option>
-									<option value="WY">Wyoming</option>
-								</select>
+								<p class="label-edit__name">Откуда</p>
+								<div class="my-select">
+									<input type="text" name="city-since" class="city-value" placeholder="укажите город" value="">
+									<div class="tab__all">
+										<div class="tab-select">
+											<div class="radio-choice">
+												<input type="radio" class="label__radio radio-select" id="radio-all-start" name="country" checked="checked" value="tab-all">
+												<label for="radio-all-start"></label>
+												<span class="label__text">Все страны</span>
+											</div>
+											<div class="radio-choice">
+												<input type="radio" class="label__radio radio-select" id="radio-kaz-start" name="country" value="tab-kaz">
+												<label for="radio-kaz-start"></label>
+												<span class="label__text">Казахстан</span>
+											</div>
+										</div>
+										<div id="tab-all" class="tab-block tab-block-active nano select-height">
+											<ul class="list-choice__city nano-content">
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+											</ul>
+										</div>
+										<div id="tab-kaz" class="tab-block nano select-height">
+											<ul class="list-choice__city nano-content">
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+											</ul>
+										</div>
+									</div>
+								</div>
 								<a href="" class="label-edit__add-place">+ место погрузки</a>
 							</div>
 							<div class="forms-block__separate label-edit">
-								<p class="label-edit__name">Откуда</p>
-								<select name="" id="" class="js-example-basic-single label-edit__select-city" data-placeholder="Форма собст-ти">
-									<option value="AL">Alabama</option>
-									<option value="WY">Wyoming</option>
-									<option value="AL">Alabama</option>
-									<option value="WY">Wyoming</option>
-								</select>
+								<p class="label-edit__name">Куда</p>
+								<div class="my-select">
+									<input type="text" name="city-since" class="city-value" placeholder="укажите город" value="">
+									<div class="tab__all">
+										<div class="tab-select">
+											<div class="radio-choice">
+												<input type="radio" class="label__radio radio-select" id="radio-all-end" name="country-finish" checked="checked" value="tab-all">
+												<label for="radio-all-end"></label>
+												<span class="label__text">Все страны</span>
+											</div>
+											<div class="radio-choice">
+												<input type="radio" class="label__radio radio-select" id="radio-kaz-end" name="country-finish" data-id="tab-kaz" value="tab-kaz">
+												<label for="radio-kaz-end"></label>
+												<span class="label__text">Казахстан</span>
+											</div>
+										</div>
+										<div id="tab-all" class="tab-block tab-block-active nano select-height">
+											<ul class="list-choice__city nano-content">
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+												<li class="list-choice__item">Москва, Московская облость, Россия</li>
+											</ul>
+										</div>
+										<div id="tab-kaz" class="tab-block nano select-height">
+											<ul class="list-choice__city nano-content">
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+												<li class="list-choice__item">Алматы, Алматинтская облость, Казахстан</li>
+											</ul>
+										</div>
+									</div>
+								</div>
 								<a href="" class="label-edit__add-place">+ место погрузки</a>
 							</div>
 						</div>

@@ -11,55 +11,80 @@
 	<link rel="stylesheet" href="css/screen.css">
 </head>
 <body>
-	<header class="header header-inner">
-		<div class="header__top">
-			<div class="top-left">
-				<div class="top-left__city city">
-					<p class="city__item city__item-active">Казахстан</p>
-					<ul class="city__choice choice">
-						<li class="choice__link choice__link-active"></li>
-						<li class="choice__link"></li>
-						<li class="choice__link"></li>
-					</ul>
+<header class="header header-inner">
+	<div class="header__top">
+		<div class="top-left">
+		<div class="top-left__city city">
+			<p class="city__item">Казахстан</p>
+			<div class="city__choice choice">
+				<div class="choice__country">
+					<div class="choice__title">Страна</div>
+					<select name="" id="" class="js-example-basic-single" data-placeholder="Форма собст-ти">
+						<option value="AL">Alabama</option>
+						<option value="WY">Wyoming</option>
+						<option value="AL">Alabama</option>
+						<option value="WY">Wyoming</option>
+					</select>
 				</div>
-				<div class="top-left__phone">
-					<p class="top-left__text">8(800) 556 78 34</p>
-					<a href="" class="top-left__link">заказать звонок</a>
+				<div class="choice__city">
+					<div class="choice__title">Город</div>
+					<input type="text" class="choice__name">
 				</div>
-			</div>
-			<div class="top-right">
-				<div class="lang">
-					<ul class="lang__bl">
-						<li class="lang__item lang__item-active lang__item-rus">Рус</li>
-						<li class="lang__item lang__item-kaz">Каз</li>
-						<li class="lang__item lang__item-eng">Eng</li>
-					</ul>
-				</div>
-				<div class="connect-block">
-					<a href="" class="connect-block__item connect-block__item-enter">Вход</a>
-					<a href="" class="connect-block__item connect-block__item-registr">Регистрация</a>
-
-				</div>
-			</div>
-			<div class="clear"></div>	
-		</div>
-		<div class="header-bot">
-			<div class="header-logo">
-				<a href="#" class="header-logo__item">
-					<h1 class="header-logo__title">BLIZ</h1>
-					<p class="header-logo__text">транспорт &bull; грузы</p>
-				</a>
-			</div>
-			<div class="header-nav">
-				<a href="" class="header-nav__link header-nav__link-zoom">Грузоперевозки</a>
-				<a href="" class="header-nav__link header-nav__link-active header-nav__link-poster">Мои объявления</a>
-				<a href="" class="header-nav__link header-nav__link-archieve">Архив</a>
-				<a href="" class="header-nav__link header-nav__link-favorites">Избранное</a>
-				<a href="" class="header-nav__link header-nav__link-tarif">Тарифы</a>
-
+				<button class="choice__button">Выбрать</button>
 			</div>
 		</div>
-	</header>
+			<div class="top-left__phone">
+				<p class="top-left__text">8(800) 556 78 34</p>
+				<a href="" class="top-left__link">заказать звонок</a>
+			</div>
+		</div>
+		<div class="top-right">
+			<div class="lang">
+				<ul class="lang__bl">
+					<li class="lang__item lang__item-active lang__item-rus">Рус</li>
+					<li class="lang__item lang__item-kaz">Каз</li>
+					<li class="lang__item lang__item-chn">中國</li>
+				</ul>
+			</div>
+			<div class="connect-block">
+				<a href="" class="connect-block__item connect-block__item-enter">Вход</a>
+				<a href="" class="connect-block__item connect-block__item-registr">Регистрация</a>
+				<div class="enter-popup">
+					<form action="">
+						<div class="enter-popup__item">
+							<div class="enter-popup__title">E-mail</div>
+							<input type="text" class="enter-popup__input">
+						</div>
+						<div class="enter-popup__item">
+							<div class="enter-popup__title">Пароль</div>
+							<input type="text" class="enter-popup__input">
+						</div>
+						<div class="enter-popup__button">Войти</div>
+						<a href="" class="enter-popup__link enter-popup__link-registr">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+						<a href="" class="enter-popup__link enter-popup__link-forget">ЗАБЫЛИ ПАРОЛЬ?</a>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>	
+	</div>
+	<div class="header-bot">
+		<div class="header-logo">
+			<a href="#" class="header-logo__item">
+				<h1 class="header-logo__title">BLIZ</h1>
+				<p class="header-logo__text">транспорт &bull; грузы</p>
+			</a>
+		</div>
+		<div class="header-nav">
+			<a href="" class="header-nav__link header-nav__link-zoom">Грузоперевозки</a>
+			<a href="" class="header-nav__link header-nav__link-active header-nav__link-poster">Мои объявления</a>
+			<a href="" class="header-nav__link header-nav__link-archieve">Архив</a>
+			<a href="" class="header-nav__link header-nav__link-favorites">Избранное</a>
+			<a href="" class="header-nav__link header-nav__link-tarif">Тарифы</a>
+
+		</div>
+	</div>
+</header>
 
 	<div class="main-cargo">
 		<div class="left-main">

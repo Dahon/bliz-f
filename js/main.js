@@ -213,94 +213,41 @@ $(function(){
 				    		myMap.controls.add(firstButton, {float: 'right'});
     				 		myMap.geoObjects.add(multiRoute);
 				    }
-	     
-/*		    var myMap;
-		    var coords = {
-		    	1: [55.831903, 37.411961],
-		    	2: [55.763338, 37.565466],
-		    	3: [55.800584, 37.675638],
-		    	4: [55.744522, 37.616378],
-		    	5: [55.780898, 37.642889],
-		    	6: [55.793559, 37.435983],
-		    	7: [55.800584, 37.675638],
-		    	8: [55.744522, 37.616378],
-		    };
-		    var currentPoint;
-
-		    function init(){     
-		     	myMap = new ymaps.Map('map', {
-	 	            center: [55.76, 37.64],
-	 	            zoom: 10,
-	 	            controls: [],
-	 	        })
-
-		     	setPoints(coords);
-
-		 	    $('.map-controller a').click(function(e) {
-		 	    	e.preventDefault();
-		 	    	if (($(this).data('id') != currentPoint)) {
-			 	    	currentPoint = $(this).data('id');
-			 	    	filterPoints(currentPoint);
-		 	    	}
-		 	    	var mainHid = $(document).find('.block-cont#hid-'+$(this).data('id')+'');
-		 	    	mainHid.addClass('active');
-		 	    	$('.map-controller').addClass('hidden');
-		 	    	$('.reset-map').addClass('active');
-		 	    	return false;
-		 	    });
-
-		 	    $('.reset-map').click(function(e) {
-		 	    	e.preventDefault();
-			     	setPoints(coords);
-			     	$(this).removeClass('active');
-					$('.block-cont').removeClass('active');
-					$('.map-controller').removeClass('hidden');
-		 	    	return false;
-		 	    })
-
-		    }
-
-		    function setPoints (coords) {
-		    	// Создаем коллекцию геообъектов и задаем опции.
-		    	var myGeoObjects = new ymaps.GeoObjectCollection();
-
-
-		    	for (var id in coords) {
-		    		var placeMark = new ymaps.Placemark(coords[id], {
-		    			id: id,
-		    		}, {
-		                // Опции.
-	                    // Необходимо указать данный тип макета.
-	                    iconLayout: 'default#image',
-	                    // Своё изображение иконки метки.
-	                    iconImageHref: 'images/icons/map-icon.png',
-	                    // Размеры метки.
-	                    iconImageSize: [33, 48],
-		            });
-
-		            placeMark.events.add('click', function(e){
-		            	filterPoints(id);
-		            })
-		    		myGeoObjects.add(placeMark);
-		    	}
-
-		    	// Добавляем коллекцию на карту.
-		    	myMap.geoObjects.add(myGeoObjects);
-		    	// Устанавливаем карте центр и масштаб так, чтобы охватить коллекцию целиком.
-		    	myMap.setBounds(myGeoObjects.getBounds());
-
-		    	return myGeoObjects;
-		    }
-
-		    function filterPoints (currentPoint) {
-	    		myMap.geoObjects.removeAll();
-	 	    	setPoints({currentPoint: coords[currentPoint]})
-		        myMap.setZoom(14);
-		    }*/
-
-
 		}
 	//end map
+
+	// city popup
+		$(document).on('click', '.city__item', function(e){
+			if($(this).hasClass('city__item-active')){
+				$(this).removeClass('city__item-active')
+				return;
+			}
+			$(this).addClass('city__item-active');
+		})
+	//city popup end
+
+	//lang-popup
+		$(document).on('click', '.lang', function(e){
+			if($(this).hasClass('lang-show')){
+				$(this).removeClass('lang-show')
+				return;
+			}
+			$(this).addClass('lang-show');
+		})
+	//lang-popup end
+
+	//enter-popup
+		$(document).on('click', '.connect-block__item-enter', function(e){
+			e.preventDefault();
+			if($('.enter-popup').hasClass('enter-popup-active')){
+				$('.enter-popup').removeClass('enter-popup-active')
+				return;
+			}
+			$('.enter-popup').addClass('enter-popup-active');
+		})
+	//enter end
+
+	inst = $('[data-remodal-id=search-modal]').remodal();
 
 //end main
 });

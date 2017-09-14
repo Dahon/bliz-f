@@ -23,8 +23,9 @@ $(function(){
 		            var reader = new FileReader();
 		            
 		            reader.onload = function (e) {
-		            	console.log(that);
-		                $('.'+that+'').attr('src', e.target.result);
+		            	console.log(e.target.result);
+		            	$('.'+that+'').attr('style',  'background-image:url('+e.target.result+')');
+		                // $('.'+that+'').attr('src', e.target.result);
 		            }
 		            
 		            reader.readAsDataURL(input.files[0]);
@@ -34,6 +35,13 @@ $(function(){
 		    	var that = $(this).data('exact');
 		        readURL(this, that);
 		    });
+
+		    console.log($('#filename'));
+		    $('.file-delete__button').on('click', function(e){
+		    	$('.logo-upload').removeAttr('style ');
+		    });
+
+
 	    //input img-form end
 
 	    //tabs registr
@@ -124,96 +132,120 @@ $(function(){
 		if ($('#map').length) {
 			var myMap;
 			ymaps.ready(init);
-				    function init(){     
-						// Создаем модель мультимаршрута.
+			    function init(){     
+					// Создаем модель мультимаршрута.
 
-						var multiRoute = new ymaps.multiRouter.MultiRoute({
-						    // Описание опорных точек мультимаршрута.
+					var multiRoute = new ymaps.multiRouter.MultiRoute({
+					    // Описание опорных точек мультимаршрута.
 
-						    referencePoints: [
-						        [55.734876, 37.59308],
-						        "Москва, ул. Мясницкая"
-						    ],
-						    
-						}, {
-							wayPointStartIconLayout: "default#image",
-							wayPointStartIconImageHref: "images/icons/map-icon.png",
-							wayPointStartIconImageSize: [41, 51],
-							wayPointStartIconImageOffset: [-20, -51],
+					    referencePoints: [
+					        [55.734876, 37.59308],
+					        "Москва, ул. Мясницкая"
+					    ],
+					    
+					}, {
+						wayPointStartIconLayout: "default#image",
+						wayPointStartIconImageHref: "images/icons/map-icon.png",
+						wayPointStartIconImageSize: [41, 51],
+						wayPointStartIconImageOffset: [-20, -51],
 
-							wayPointFinishIconLayout: "default#image",
-							wayPointFinishIconImageHref: "images/icons/map-iconB.png",
-							wayPointFinishIconImageSize: [41, 51],
-							wayPointFinishIconImageOffset: [-20, -51],
+						wayPointFinishIconLayout: "default#image",
+						wayPointFinishIconImageHref: "images/icons/map-iconB.png",
+						wayPointFinishIconImageSize: [41, 51],
+						wayPointFinishIconImageOffset: [-20, -51],
 
-							routeStrokeWidth: 1,
-					        routeStrokeColor: "#ccc",
-					        routeActiveStrokeWidth: 4,
-					        routeActiveStrokeColor: "#f08c00",
+						routeStrokeWidth: 1,
+				        routeStrokeColor: "#ccc",
+				        routeActiveStrokeWidth: 4,
+				        routeActiveStrokeColor: "#f08c00",
 
-							viaPointIconRadius: 0,
-							viaPointIconFillColor: "#000088",
-							viaPointActiveIconFillColor: "#E63E92",
+						viaPointIconRadius: 0,
+						viaPointIconFillColor: "#000088",
+						viaPointActiveIconFillColor: "#E63E92",
 
-						    boundsAutoApply: true
-						});
+					    boundsAutoApply: true
+					});
 
-					    viaPointButtonEconom = new ymaps.control.Button({
-					        data: { content: "Эконом" },
-					        options: { selectOnClick: true }
-					    });
+				    viaPointButtonEconom = new ymaps.control.Button({
+				        data: { content: "Эконом" },
+				        options: { selectOnClick: true }
+				    });
 
-						viaPointButtonShort = new ymaps.control.Button({
-						    data: { content: "Короткий" },
-						    options: { selectOnClick: true }
-						});
+					viaPointButtonShort = new ymaps.control.Button({
+					    data: { content: "Короткий" },
+					    options: { selectOnClick: true }
+					});
 
-						viaPointButtonFast = new ymaps.control.Button({
-						    data: { content: "Быстрый" },
-						    options: { selectOnClick: true }
-						});
+					viaPointButtonFast = new ymaps.control.Button({
+					    data: { content: "Быстрый" },
+					    options: { selectOnClick: true }
+					});
 
-						viaPointButtonFast.events.add('select', function (event) {
-						    var referencePoints = multiRoute.model.getReferencePoints();
-						    referencePoints.splice(1, -1, [55.746870, 37.628554], [55.753067, 37.648638], [55.758439, 37.638424]);
-						    var lg = referencePoints.length-2;
-						    multiRoute.model.setReferencePoints(referencePoints, [1, 2, 3]);
-						    var routes = multiRoute.model.getRoutes();
-						    var asdsad = routes;
-						    console.log(asdsad);
-						    var timeMap = routes[1].properties.get("duration").text;
-						    var distanceMap = routes[1].properties.get("distance").text;
-						    $('.km-distance').text(distanceMap);
-						    $('.time-duration').text(timeMap);
-						});
+					viaPointButtonFast.events.add('select', function (event) {
+					    referencePoints = multiRoute.model.getReferencePoints();
+					    console.log(referencePoints);
+					    referencePoints = [ [55.734876, 37.59308], [55.746870, 37.628554], [55.753067, 37.648638], [55.758439, 37.638424], "Москва, ул. Мясницкая"];
+					    var lg = referencePoints.length-2;
+					    
+					    multiRoute.model.setReferencePoints(referencePoints, [1, 2, 3]);
 
-						viaPointButtonFast.events.add('deselect', function () {
-							var referencePoints = multiRoute.model.getReferencePoints();
-							var lg = referencePoints.length-2;
-							referencePoints.splice(1, lg);
+					    myMap.geoObjects.add(multiRoute);
+					    console.log(referencePoints);
+					    console.log(multiRoute.getActiveRoute().properties.get("duration").text);
+					   	routes = multiRoute.model.getRoutes();
+					    console.log(routes);
+					    // var pizda = multiRoute.getActiveRoute().properties._data.distance.text;
+					    // var asdsad = routes;
+					    // console.log(pizda);
+					    // var timeMap = routes[1].properties.get("duration").text;
+					    // var distanceMap = routes[1].properties.get("distance").text;
+					    // $('.km-distance').text(distanceMap);
+					    // $('.time-duration').text(timeMap);
+					});
 
-							multiRoute.model.setReferencePoints(referencePoints, []);
-						});
+					viaPointButtonFast.events.add('deselect', function () {
+						var referencePoints = multiRoute.model.getReferencePoints();
+						var lg = referencePoints.length-2;
+						referencePoints.splice(1, lg);
 
-						ymaps.modules.require([
-						    'MultiRouteCustomView'
-						], function (MultiRouteCustomView) {
-						    new MultiRouteCustomView(multiRouteModel);
-						});
+						multiRoute.model.setReferencePoints(referencePoints, []);
+					});
 
-				    	// Создаем карту с добавленной на нее кнопкой.
-				    	var myMap = new ymaps.Map('map', {
-				    	        center: [55.750625, 37.626],
-				    	        zoom: 7,
-				    	        controls: [viaPointButtonFast, viaPointButtonShort, viaPointButtonEconom]
-				    	    }, {
-				    	        buttonMaxWidth: 300
-				    	    }),
-				    	    firstButton = new ymaps.control.Button("Кнопка");
-				    		myMap.controls.add(firstButton, {float: 'right'});
-    				 		myMap.geoObjects.add(multiRoute);
-				    }
+					ymaps.modules.require([
+					    'MultiRouteCustomView'
+					], function (MultiRouteCustomView) {
+					    new MultiRouteCustomView(multiRouteModel);
+					});
+
+			    	// Создаем карту с добавленной на нее кнопкой.
+			    	var myMap = new ymaps.Map('map', {
+			    	        center: [55.750625, 37.626],
+			    	        zoom: 7,
+			    	        controls: [viaPointButtonFast, viaPointButtonShort, viaPointButtonEconom]
+			    	    }, {
+			    	        buttonMaxWidth: 300
+			    	    }),
+			    	    firstButton = new ymaps.control.Button("Кнопка");
+			    		myMap.controls.add(firstButton, {float: 'right'});
+				 		myMap.geoObjects.add(multiRoute);
+				 		console.log(referencePoints);
+				 		console.log(routes);
+			    }
+
 		}
+		// if ($('#map').length) {
+		// 	var myMap;
+		// 	ymaps.ready(init);
+		// 	function init(){ 
+		// 		var myMap = new ymaps.Map("map", {
+		// 		         center: [55.745508, 37.435225],
+		// 		         zoom: 13
+		// 		     }, {
+		// 		         searchControlProvider: 'yandex#search'
+		// 		     });
+
+		// 	}
+		// }
 	//end map
 
 	// city popup
